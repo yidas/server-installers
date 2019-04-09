@@ -1,6 +1,6 @@
 #!/bin/bash
 
-# Postfix SMTP with Dovecot SASL for Ubuntu 16.04 TLS
+# Postfix SMTP with Dovecot SASL for Ubuntu 18.04 TLS
 #
 # @author  Nick Tsai <myintaer@gmail.com>
 # @version 1.0.0
