@@ -1,6 +1,6 @@
 #!/bin/bash
 
-# Redis Installer for Ubuntu 16.04 TLS
+# Redis Installer for Ubuntu 18.04 TLS
 #
 # @author  Nick Tsai <myintaer@gmail.com>
 # @version 1.0.0
@@ -42,9 +42,7 @@ if [ $installAdmin = true ]; then
   sudo apt install nginx -y
 
   # PHP
-  sudo apt-get install php-fpm php-mysql php-cli php-mcrypt php-curl php-mbstring php-imagick php-gd php-xml php-zip -y
-  sudo apt-get install php-memcached memcached -y
-  sudo phpenmod mcrypt
+  sudo apt-get install php-fpm php-mysql php-cli php-curl php-mbstring php-imagick php-gd php-xml php-zip -y
   
   # Install admin
   # Composer

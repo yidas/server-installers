@@ -1,10 +1,10 @@
 #!/bin/bash
 
-# LNMP Installer for Ubuntu 16.04 TLS
+# LNMP Installer for Ubuntu 18.04 TLS
 #
 # @author  Nick Tsai <myintaer@gmail.com>
 # @version 1.0.0
-# @link    https://github.com/yidas/shell
+# @link    https://github.com/yidas/server-installers
 
 # Access Configuration
 sshPasswodAuthOn=false

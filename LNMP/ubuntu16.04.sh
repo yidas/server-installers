@@ -4,7 +4,7 @@
 #
 # @author  Nick Tsai <myintaer@gmail.com>
 # @version 1.0.0
-# @link    https://github.com/yidas/shell
+# @link    https://github.com/yidas/server-installers
 
 # Access Configuration
 sshPasswodAuthOn=false
@@ -148,11 +148,7 @@ if [ $installPhpMyAdmin = true ]; then
     sudo rm -f "${filename}.tar.gz"
     sudo mv "${webPath}${filename}" "${webPath}phpmyadmin"
     # Nginx Default Site
-    if [ $usePhp5 = true ]; then
-        configUrl='https://raw.githubusercontent.com/yidas/server-installers/master/LNMP/nginx-sites/default-php7.0%2B5.6'
-    else
-        configUrl='https://raw.githubusercontent.com/yidas/server-installers/master/LNMP/nginx-sites/default-php7.0'
-    fi
+    configUrl='https://raw.githubusercontent.com/yidas/server-installers/master/LNMP/nginx-sites/default-php7.0-all'
     
     sudo wget "${configUrl}" -O /etc/nginx/sites-available/default
     
