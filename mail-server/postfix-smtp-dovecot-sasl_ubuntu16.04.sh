@@ -31,7 +31,7 @@ sudo postconf -e 'smtpd_recipient_restrictions = permit_sasl_authenticated,permi
 
 # Dovecot SASL setting for Postfix
 if ! grep -q " unix_listener /var/spool/postfix/private/auth" /etc/dovecot/conf.d/10-master.conf; then
-    sed -i '/# Postfix smtp-auth/c\  # Postfix smtp-auth\n  unix_listener /var/spool/postfix/private/auth {\n    model=0600\n  }' /etc/dovecot/conf.d/10-master.conf
+    sed -i '/# Postfix smtp-auth/c\  # Postfix smtp-auth\n  unix_listener /var/spool/postfix/private/auth {\n    mode=0600\n  }' /etc/dovecot/conf.d/10-master.conf
 fi
 sed -i '/auth_mechanisms = plain/c\auth_mechanisms = plain login' /etc/dovecot/conf.d/10-auth.conf
 
