@@ -16,4 +16,13 @@ $ wget https://raw.githubusercontent.com/yidas/server-installers/master/mail-ser
 $ bash installer
 ```
 
+### Postfix SMTP with Dovecot SASL in Ubuntu 16.04 LTS
+
+> Postfix: 3.3.0  
+> Dovecot: 2.2.33.2 
+
+```
+$ wget https://raw.githubusercontent.com/yidas/server-installers/master/mail-server/postfix-smtp-dovecot-sasl_ubuntu18.04.sh -O installer
+$ bash installer
+```
 
