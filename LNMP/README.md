@@ -8,9 +8,10 @@ INSTALLATION
 
 ### Ubuntu 16.04 LTS
 
+> Nginx: 1.10.3  
 > PHP: 7.0  
 > PHP: 5.6 (Optional)  
-> 
+> MySQL: 5.7.25  
 
 ```
 $ wget https://raw.githubusercontent.com/yidas/server-installers/master/LNMP/ubuntu16.04.sh -O installer
