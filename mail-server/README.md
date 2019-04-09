@@ -6,7 +6,9 @@ Mail Service Environment Building
 INSTALLATION
 ------------
 
-### Postfix SMTP with Dovecot SASL in Ubuntu 16.04 LTS
+### Postfix SMTP with Dovecot SASL 
+
+#### Ubuntu 16.04 LTS
 
 > Postfix: 3.1.0  
 > Dovecot: 2.2.22  
@@ -16,7 +18,7 @@ $ wget https://raw.githubusercontent.com/yidas/server-installers/master/mail-ser
 $ bash installer
 ```
 
-### Postfix SMTP with Dovecot SASL in Ubuntu 16.04 LTS
+#### Ubuntu 18.04 LTS
 
 > Postfix: 3.3.0  
 > Dovecot: 2.2.33.2 
