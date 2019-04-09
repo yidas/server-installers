@@ -17,13 +17,6 @@ case $yn in
     * ) 
 esac
 
-# IPv6 Disabled
-if ! grep -q "net.ipv6.conf.all.disable_ipv6 = 1" /etc/sysctl.conf; then
-    sudo printf "net.ipv6.conf.all.disable_ipv6 = 1\nnet.ipv6.conf.default.disable_ipv6 = 1\nnet.ipv6.conf.lo.disable_ipv6 = 1" >> /etc/sysctl.conf
-    sysctl -p
-    echo "IPv6 Disabled"
-fi
-
 # APT Source using IPv4
 sudo apt update
 
@@ -47,7 +40,7 @@ if [ $installAdmin = true ]; then
   # Install admin
   # Composer
   curl -s http://getcomposer.org/installer | php
-  php composer.phar create-project erik-dubbelboer/php-redis-admin /var/www/html/redis
+  php composer.phar create-project erik-dubbelboer/php-redis-admin /var/www/html/phpredisadmin
   # Site setting
   configUrl='https://raw.githubusercontent.com/yidas/server-installers/master/LNMP/nginx-sites/default-php7.2-all'
   sudo wget "${configUrl}" -O /etc/nginx/sites-available/default
