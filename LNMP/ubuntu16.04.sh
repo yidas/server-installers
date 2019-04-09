@@ -149,10 +149,9 @@ if [ $installPhpMyAdmin = true ]; then
     sudo mv "${webPath}${filename}" "${webPath}phpmyadmin"
     # Nginx Default Site
     if [ $usePhp5 = true ]; then
-        # configUrl='https://raw.githubusercontent.com/yidas/shell/master/installer/config/nginx/sites-enabled/default-php5.6'
-        configUrl='https://raw.githubusercontent.com/yidas/shell/master/installer/config/nginx/sites-enabled/default-php7.0'
+        configUrl='https://github.com/yidas/server-installers/blob/master/LNMP/nginx-sites/default-php7.0+5.6'
     else
-        configUrl='https://raw.githubusercontent.com/yidas/shell/master/installer/config/nginx/sites-enabled/default-php7.0'
+        configUrl='https://github.com/yidas/server-installers/blob/master/LNMP/nginx-sites/default-php7.0'
     fi
     
     sudo wget "${configUrl}" -O /etc/nginx/sites-available/default
