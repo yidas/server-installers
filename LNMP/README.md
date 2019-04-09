@@ -9,7 +9,7 @@ INSTALLATION
 ### Ubuntu 16.04 LTS
 
 ```
-wget https://raw.githubusercontent.com/yidas/server-installers/master/installer/LNMP/ubuntu16.04.sh -O installer
+wget https://raw.githubusercontent.com/yidas/server-installers/master/LNMP/ubuntu16.04.sh -O installer
 ```
 
 ```
