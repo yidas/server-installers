@@ -8,9 +8,8 @@ INSTALLATION
 
 ### Postfix SMTP with Dovecot SASL in Ubuntu 16.04 LTS
 
-> Nginx: 1.10.3  
-> PHP: 7.0  
-> Redis: 3.0.6    
+> Postfix: 3.1.0  
+> Dovecot: 2.2.22 
 >
 > *PhpRedisAdmin (Optional) is installed at `/var/www/html/phpredisadmin` and can be accessed via `http://yourhost/phpredisadmin`.*
 
