@@ -22,3 +22,16 @@ Select your Linux distribution to download and execute the installer as below:
 $ wget https://raw.githubusercontent.com/yidas/server-installers/master/redis/ubuntu16.04.sh -O installer
 $ bash installer
 ```
+
+### Ubuntu 18.04 LTS
+
+> Nginx: 1.14.0  
+> PHP: 7.2  
+> Redis: 4.0.9    
+>
+> *PhpRedisAdmin (Optional) is installed at `/var/www/html/phpredisadmin` and can be accessed via `http://yourhost/phpredisadmin`.*
+
+```
+$ wget https://raw.githubusercontent.com/yidas/server-installers/master/redis/ubuntu18.04.sh -O installer
+$ bash installer
+```
