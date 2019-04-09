@@ -8,8 +8,8 @@ INSTALLATION
 
 ### Ubuntu 16.04 LTS
 
-> PHP: 7.0
-> PHP: 5.6 (Optional)
+> PHP: 7.0  
+> PHP: 5.6 (Optional)  
 > 
 
 ```
@@ -19,12 +19,12 @@ $ bash installer
 
 ### Ubuntu 18.04 LTS
 
-> Nginx: 1.14.0
-> PHP: 7.2
-> PHP: 7.3 (Optional)
-> PHP: 7.0 (Optional)
-> PHP: 5.6 (Optional)
-> MySQL: 5.7.25
+> Nginx: 1.14.0  
+> PHP: 7.2  
+> PHP: 7.3 (Optional)  
+> PHP: 7.0 (Optional)  
+> PHP: 5.6 (Optional)  
+> MySQL: 5.7.25  
 
 ```
 $ wget https://raw.githubusercontent.com/yidas/server-installers/master/LNMP/ubuntu18.04.sh -O installer
