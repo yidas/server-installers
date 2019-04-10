@@ -12,9 +12,9 @@ Select your Linux distribution to download and execute the installer as below:
 
 ### Ubuntu 16.04 LTS
 
-> Nginx: 1.10.3  
-> PHP: 7.0  
-> Redis: 3.0.6    
+> Redis: 3.0.6   
+> Nginx: 1.10.3 (Optional by PhpRedisAdmin)  
+> PHP: 7.0 (Optional by PhpRedisAdmin)   
 >
 > *PhpRedisAdmin (Optional) is installed at `/var/www/html/phpredisadmin` and can be accessed via `http://yourhost/phpredisadmin`.*
 
@@ -25,9 +25,9 @@ $ bash installer
 
 ### Ubuntu 18.04 LTS
 
-> Nginx: 1.14.0  
-> PHP: 7.2  
-> Redis: 4.0.9    
+> Redis: 4.0.9   
+> Nginx: 1.14.0 (Optional by PhpRedisAdmin)  
+> PHP: 7.2 (Optional by PhpRedisAdmin)   
 >
 > *PhpRedisAdmin (Optional) is installed at `/var/www/html/phpredisadmin` and can be accessed via `http://yourhost/phpredisadmin`.*
 

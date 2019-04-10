@@ -1,0 +1,22 @@
+# the upstream component nginx needs to connect to
+upstream python {
+    # server unix:///path/to/your/mysite/mysite.sock; # For a file socket
+    server 127.0.0.1:8001; # For a web port socket (we'll use this first)
+}
+
+# configuration of the server
+server {
+    listen 80 default_server;
+    listen [::]:80 default_server;
+    server_name _;
+
+    #location /static {
+    #    alias /path/to/your/mysite/static; # your project's static files - amend as required
+    #}
+
+    # Send all non-media requests to the Python server.
+    location / {
+        uwsgi_pass  python;
+        include     /etc/nginx/uwsgi_params; # the uwsgi_params file you installed
+    }
+}
