@@ -6,24 +6,6 @@
 # @version 1.0.0
 # @link    https://github.com/yidas/server-installers
 
-# Access Configuration
-sshPasswodAuthOn=false
-echo "SSH Login: Do you want turn on SSH PasswordAuthentication? [Y/n, empty as No]:"
-read sshPasswodAuthOn
-case $yn in
-    [Yy]* ) sshPasswodAuthOn=true;;
-    * ) 
-esac
-
-echo "Sudoer User: Type the sudoer user name if you want to create, empty to skip, followed by [ENTER]:"
-read sudoerUsername
-
-sudoerPassword=''
-if [ $sudoerUsername ]; then
-    echo "Sudoer User: Type the password for sudoer user \`{$sudoerUsername}\` if you want to create, or empty, followed by [ENTER]:"
-    read sudoerPassword
-fi
-
 # PHP 7.3
 usePhp73=false;
 echo "PHP: Do you want to additionally install PHP 7.3? [Y/n, empty as No]"
@@ -80,30 +62,6 @@ if [ $installPhpMyAdmin = true ]; then
         [Nn]* ) installPhpMyAdminTheme=false;;
         * ) installPhpMyAdminTheme=true;;
     esac
-fi
-
-# Access
-if [ $sshPasswodAuthOn ]; then
-    # Root Login Disabled
-    sudo sed -i 's/PermitRootLogin yes/PermitRootLogin no/g' /etc/ssh/sshd_config
-    sudo sed -i 's/PasswordAuthentication no/PasswordAuthentication yes/g' /etc/ssh/sshd_config
-    sudo service ssh reload
-fi
-
-# Sudoer
-if [ $sudoerUsername ]; then
-    sudo adduser ${sudoerUsername} --gecos "" --disabled-password
-    echo "${sudoerUsername}:${sudoerPassword}" | sudo chpasswd
-    sudo usermod -a -G sudo ${sudoerUsername}
-else
-    echo "Skip creating user"
-fi
-
-# IPv6 Disabled
-if ! grep -q "net.ipv6.conf.all.disable_ipv6 = 1" /etc/sysctl.conf; then
-    sudo printf "net.ipv6.conf.all.disable_ipv6 = 1\nnet.ipv6.conf.default.disable_ipv6 = 1\nnet.ipv6.conf.lo.disable_ipv6 = 1" >> /etc/sysctl.conf
-    sysctl -p
-    echo "IPv6 Disabled"
 fi
 
 # APT Source using IPv4
