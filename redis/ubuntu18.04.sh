@@ -30,13 +30,6 @@ if [ $installAdmin = true ]; then
     fi
 fi
 
-# IPv6 Disabled
-if ! grep -q "net.ipv6.conf.all.disable_ipv6 = 1" /etc/sysctl.conf; then
-    sudo printf "net.ipv6.conf.all.disable_ipv6 = 1\nnet.ipv6.conf.default.disable_ipv6 = 1\nnet.ipv6.conf.lo.disable_ipv6 = 1" >> /etc/sysctl.conf
-    sysctl -p
-    echo "IPv6 Disabled"
-fi
-
 # APT Source using IPv4
 sudo apt update
 
