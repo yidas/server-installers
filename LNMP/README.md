@@ -8,7 +8,7 @@ INSTALLATION
 
 Select your Linux distribution to download and execute the installer as below:
 
-> You can make installer executable by `$ chmod +x ./installer` then `$ ./installer`.
+> You can download the installer by `wget installer-url -O installer` and make it executable by `$ chmod +x ./installer` then `$ ./installer`.
 
 ### Ubuntu 16.04 LTS
 
@@ -20,8 +20,7 @@ Select your Linux distribution to download and execute the installer as below:
 > *PhpMyAdmin (Optional) is installed at `/var/www/html/phpmyadmin` and can be accessed via `http://yourhost/phpmyadmin`.*
 
 ```
-$ wget https://raw.githubusercontent.com/yidas/server-installers/master/LNMP/ubuntu16.04.sh -O installer
-$ bash installer
+$ bash <(wget -qO- https://raw.githubusercontent.com/yidas/server-installers/master/LNMP/ubuntu16.04.sh)
 ```
 
 ### Ubuntu 18.04 LTS
@@ -36,8 +35,7 @@ $ bash installer
 > *PhpMyAdmin (Optional) is installed at `/var/www/html/phpmyadmin` and can be accessed via `http://yourhost/phpmyadmin`.*
 
 ```
-$ wget https://raw.githubusercontent.com/yidas/server-installers/master/LNMP/ubuntu18.04.sh -O installer
-$ bash installer
+$ bash <(wget -qO- https://raw.githubusercontent.com/yidas/server-installers/master/LNMP/ubuntu18.04.sh)
 ```
 
 

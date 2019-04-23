@@ -18,3 +18,6 @@ OUTLINE
   
 - [Redis](redis)  
   Redis memory cache server
+  
+- [Setup](setup)  
+  Linux server basic setup

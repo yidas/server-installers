@@ -53,7 +53,7 @@ $ bash installer
 > *Django project is placed at `/var/www/mysite/` and uWSGI will run in background so that you can access via `http://yourhost/admin`.*
 
 ```
-$ wget https://raw.githubusercontent.com/yidas/server-installers/master/django-python-web-server/nginx-uwsgi_ubuntu16.04.sh -O installer
+$ wget https://raw.githubusercontent.com/yidas/server-installers/master/python-web-server/django-nginx-uwsgi_ubuntu16.04.sh -O installer
 $ bash installer
 ```
 
@@ -68,7 +68,7 @@ $ bash installer
 > *Django project is placed at `/var/www/mysite/` and uWSGI will run in background so that you can access via `http://yourhost/admin`.*
 
 ```
-$ wget https://raw.githubusercontent.com/yidas/server-installers/master/django-python-web-server/nginx-uwsgi_ubuntu18.04.sh -O installer
+$ wget https://raw.githubusercontent.com/yidas/server-installers/master/python-web-server/django-nginx-uwsgi_ubuntu18.04.sh -O installer
 $ bash installer
 ```
 
