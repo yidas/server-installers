@@ -19,8 +19,7 @@ Select your Linux distribution to download and execute the installer as below:
 > *PhpRedisAdmin (Optional) is installed at `/var/www/html/phpredisadmin` and can be accessed via `http://yourhost/phpredisadmin`.*
 
 ```
-$ wget https://raw.githubusercontent.com/yidas/server-installers/master/redis/ubuntu16.04.sh -O installer
-$ bash installer
+$ bash <(wget -qO- https://raw.githubusercontent.com/yidas/server-installers/master/redis/ubuntu16.04.sh)
 ```
 
 ### Ubuntu 18.04 LTS
@@ -32,6 +31,5 @@ $ bash installer
 > *PhpRedisAdmin (Optional) is installed at `/var/www/html/phpredisadmin` and can be accessed via `http://yourhost/phpredisadmin`.*
 
 ```
-$ wget https://raw.githubusercontent.com/yidas/server-installers/master/redis/ubuntu18.04.sh -O installer
-$ bash installer
+$ bash <(wget -qO- https://raw.githubusercontent.com/yidas/server-installers/master/redis/ubuntu18.04.sh)
 ```
