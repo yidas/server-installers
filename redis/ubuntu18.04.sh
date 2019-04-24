@@ -7,7 +7,7 @@
 # @link    https://github.com/yidas/server-installers
 
 # Program commands check
-for cmd in wget tar mkdir sudo chmod cp nginx php service
+for cmd in wget sudo service
 do
     if ! hash $cmd 2>/dev/null
     then

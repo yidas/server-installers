@@ -6,6 +6,16 @@
 # @version 1.0.0
 # @link    https://github.com/yidas/server-installers
 
+# Program commands check
+for cmd in wget sudo service
+do
+    if ! hash $cmd 2>/dev/null
+    then
+        echo "The required program '$cmd' is currently not installed. To run '$cmd' please ask your administrator to install the package '$cmd'"
+        exit 1
+    fi
+done
+
 # Password
 echo "Redis: Type the password for Redis, default is no authentication followed by [ENTER]:"
 read -s redisPassword
