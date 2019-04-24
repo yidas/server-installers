@@ -28,6 +28,6 @@ configUrl='https://raw.githubusercontent.com/yidas/server-installers/master/pyth
 sudo wget "${configUrl}" -O /etc/nginx/sites-available/default
 
 # Run uWSGI in the backgroud
-uwsgi --socket :8001 --wsgi-file /var/www/python-project/response.py &
+uwsgi --socket :8001 --wsgi-file /var/www/python-project/response.py --disable-logging &
 
 sudo service nginx reload
