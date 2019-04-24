@@ -35,7 +35,7 @@ case $yn in
         installMySQL=true
         
         echo "MySQL: Type the password for MySQL root, default is \`password\` followed by [ENTER]:"
-        read mysqlRootPassword
+        read -s mysqlRootPassword
         if [ ! $mysqlRootPassword ]; then
             mysqlRootPassword='password'
         fi
