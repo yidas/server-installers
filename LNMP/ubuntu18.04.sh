@@ -6,6 +6,15 @@
 # @version 1.0.0
 # @link    https://github.com/yidas/server-installers
 
+for cmd in wget apt apt-get sudo service tar mv rm
+do
+    if ! hash $cmd 2>/dev/null
+    then
+        echo "The required program '$cmd' is currently not installed. To run '$cmd' please ask your administrator to install the package '$cmd'"
+        exit 1
+    fi
+done
+
 # PHP 7.3
 usePhp73=false;
 echo "PHP: Do you want to additionally install PHP 7.3? [Y/n, empty as No]"

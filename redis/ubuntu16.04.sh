@@ -7,7 +7,7 @@
 # @link    https://github.com/yidas/server-installers
 
 # Program commands check
-for cmd in wget sudo service
+for cmd in wget apt apt-get sudo service
 do
     if ! hash $cmd 2>/dev/null
     then

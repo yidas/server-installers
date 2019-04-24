@@ -6,6 +6,16 @@
 # @version 1.0.0
 # @link    https://github.com/yidas/server-installers
 
+# Program commands check
+for cmd in wget apt apt-get sudo service tar mv rm
+do
+    if ! hash $cmd 2>/dev/null
+    then
+        echo "The required program '$cmd' is currently not installed. To run '$cmd' please ask your administrator to install the package '$cmd'"
+        exit 1
+    fi
+done
+
 # PHP
 usePhp5=false;
 # PHP default
