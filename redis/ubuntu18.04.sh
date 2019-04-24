@@ -18,7 +18,7 @@ done
 
 # Password
 echo "Redis: Type the password for Redis, default is no authentication followed by [ENTER]:"
-read redisPassword
+read -s redisPassword
 
 # phpRedisAdmin
 installAdmin=false;
@@ -36,17 +36,12 @@ if [ $installAdmin = true ]; then
 
     if [ $adminUsername ]; then
         echo "phpRedisAdmin: Type the password for phpRedisAdmin, followed by [ENTER]:"
-        read adminPassword
+        read -s adminPassword
     fi
 fi
 
 # APT Source using IPv4
 sudo apt update
-
-# Timezone
-sudo timedatectl set-timezone Asia/Taipei
-sudo apt install ntpdate -y
-sudo ntpdate time.stdtime.gov.tw
 
 # Redis
 sudo apt install redis-server -y
