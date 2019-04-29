@@ -76,14 +76,8 @@ fi
 # APT Source using IPv4
 sudo apt-get update
 
-# Timezone
-sudo timedatectl set-timezone Asia/Taipei
-sudo apt-get install ntpdate -y
-sudo ntpdate time.stdtime.gov.tw
-
 # Nginx
 sudo apt-get install nginx -y
-
 
 # PHP
 sudo apt-get install php-fpm php-mysql php-cli php-curl php-mbstring php-imagick php-gd php-xml php-zip -y

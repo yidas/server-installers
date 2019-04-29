@@ -72,11 +72,6 @@ fi
 # APT Source using IPv4
 sudo apt-get update
 
-# Timezone
-sudo timedatectl set-timezone Asia/Taipei
-sudo apt-get install ntpdate -y
-sudo ntpdate time.stdtime.gov.tw
-
 # Nginx
 sudo apt-get install nginx -y
 
