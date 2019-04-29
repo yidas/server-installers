@@ -73,14 +73,14 @@ fi
 sudo apt-get update
 
 # Apache
-sudo apt-get install apache2
+sudo apt-get install apache2 -y
 
 # PHP
 sudo apt-get install php-fpm php-mysql php-cli php-mcrypt php-curl php-mbstring php-imagick php-gd php-xml php-zip -y
 sudo apt-get install php-memcached memcached -y
 sudo phpenmod mcrypt
 # Apache PHP Mod
-sudo apt-get install libapache2-mod-php
+sudo apt-get install libapache2-mod-php -y
 
 if [ $usePhp5 = true ]; then
     # PHP 5.6
@@ -89,8 +89,8 @@ if [ $usePhp5 = true ]; then
     sudo add-apt-repository ppa:ondrej/php -y
     sudo apt-get update
     sudo apt-get install php5.6-fpm php5.6-mysql php5.6-cli php5.6-mcrypt php5.6-curl php5.6-mbstring php5.6-imagick php5.6-gd php5.6-xml php5.6-zip -y
-    # Apache PHP Mod
-    sudo apt-get install libapache2-mod-php
+    # Apache PHP Mod (To swicth mod: `a2dismod php7.0` > `a2enmod php5.6` then restart Apache)
+    sudo apt-get install libapache2-mod-php -y
 fi
 
 # MySQL
