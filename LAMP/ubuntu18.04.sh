@@ -1,12 +1,11 @@
 #!/bin/bash
 
-# LAMP Installer for Ubuntu 16.04 TLS
+# LNMP Installer for Ubuntu 18.04 TLS
 #
 # @author  Nick Tsai <myintaer@gmail.com>
 # @version 1.0.0
 # @link    https://github.com/yidas/server-installers
 
-# Program commands check
 for cmd in wget apt apt-get sudo service tar mv rm
 do
     if ! hash $cmd 2>/dev/null
@@ -16,25 +15,30 @@ do
     fi
 done
 
-# PHP
+# PHP 7.3
+usePhp73=false;
+echo "PHP: Do you want to additionally install PHP 7.3? [Y/n, empty as No]"
+read yn
+case $yn in
+    [Yy]* ) usePhp73=true;;
+    * ) 
+esac
+# PHP 7.0
+usePhp70=false;
+echo "PHP: Do you want to additionally install PHP 7.0? [Y/n, empty as No]"
+read yn
+case $yn in
+    [Yy]* ) usePhp70=true;;
+    * ) 
+esac
+# PHP 5.6
 usePhp5=false;
-# PHP default
 echo "PHP: Do you want to additionally install PHP 5.6? [Y/n, empty as No]"
 read yn
 case $yn in
     [Yy]* ) usePhp5=true;;
     * ) 
 esac
-# PHP force asking
-#while true; do
-#    echo "PHP: Default version is PHP 7, install old version PHP 5.6? [Y/n]"
-#    read yn
-#    case $yn in
-#        [Yy]* ) usePhp5=true; break;;
-#        [Nn]* ) break;;
-#        * ) echo "Please answer yes or no.";;
-#    esac
-#done
 
 # MySQL question
 echo "MySQL: Do you want to install MySQL? [Y/n, empty as Yes]"
@@ -76,20 +80,36 @@ sudo apt-get update
 sudo apt-get install apache2 -y
 
 # PHP
-sudo apt-get install php-fpm php-mysql php-cli php-mcrypt php-curl php-mbstring php-imagick php-gd php-xml php-zip -y
+sudo apt-get install php-fpm php-mysql php-cli php-curl php-mbstring php-imagick php-gd php-xml php-zip -y
 sudo apt-get install php-memcached memcached -y
-sudo phpenmod mcrypt
 # Apache PHP Mod
 sudo apt-get install libapache2-mod-php -y
 
-if [ $usePhp5 = true ]; then
-    # PHP 5.6
+if [ $usePhp73 = true ] || [ $usePhp70 = true ] || [ $usePhp5 = true ]; then
+    # PPA
     sudo apt-get install software-properties-common -y
-    sudo apt-get install python-software-properties -y
     sudo add-apt-repository ppa:ondrej/php -y
     sudo apt-get update
+fi
+
+if [ $usePhp73 = true ]; then
+    # PHP 7.3
+    sudo apt-get install php7.3-fpm php7.3-mysql php7.3-cli php7.3-curl php7.3-mbstring php7.3-imagick php7.3-gd php7.3-xml php7.3-zip -y
+    # Apache PHP Mod (To swicth mod: `a2dismod php7.2` > `a2enmod php7.3` then restart Apache)
+    sudo apt-get install libapache2-mod-php7.3 -y
+fi
+
+if [ $usePhp70 = true ]; then
+    # PHP 7.0
+    sudo apt-get install php7.0-fpm php7.0-mysql php7.0-cli php7.0-mcrypt php7.0-curl php7.0-mbstring php7.0-imagick php7.0-gd php7.0-xml php7.0-zip -y
+    # Apache PHP Mod (To swicth mod: `a2dismod php7.2` > `a2enmod php7.0` then restart Apache)
+    sudo apt-get install libapache2-mod-php7.0 -y
+fi
+
+if [ $usePhp5 = true ]; then
+    # PHP 5.6
     sudo apt-get install php5.6-fpm php5.6-mysql php5.6-cli php5.6-mcrypt php5.6-curl php5.6-mbstring php5.6-imagick php5.6-gd php5.6-xml php5.6-zip -y
-    # Apache PHP Mod (To swicth mod: `a2dismod php7.0` > `a2enmod php5.6` then restart Apache)
+    # Apache PHP Mod (To swicth mod: `a2dismod php7.2` > `a2enmod php5.6` then restart Apache)
     sudo apt-get install libapache2-mod-php5.6 -y
 fi
 
@@ -114,7 +134,7 @@ if [ $installPhpMyAdmin = true ]; then
     sudo rm -f "${filename}.tar.gz"
     sudo mv "${webPath}${filename}" "${webPath}phpmyadmin"
     # Nginx Default Site
-    configUrl='https://raw.githubusercontent.com/yidas/server-installers/master/LNMP/nginx-sites/default-php7.0-all'
+    configUrl='https://raw.githubusercontent.com/yidas/server-installers/master/LNMP/nginx-sites/default-php7.2-all'
     
     sudo wget "${configUrl}" -O /etc/nginx/sites-available/default
     
