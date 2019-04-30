@@ -25,7 +25,7 @@ $ bash <(wget -qO- https://raw.githubusercontent.com/yidas/server-installers/mas
 
 ### Ubuntu 18.04 LTS
 
-> Nginx: 1.14.0  
+> Apache: 2.4.29  
 > PHP: 7.2  
 > PHP: 7.3 (Optional)  
 > PHP: 7.0 (Optional)  
