@@ -1,7 +1,7 @@
-*Linux Nignx MySQL PHP*
-=======================
+*Linux Apache MySQL PHP*
+========================
 
-LNMP Environment Building
+LAMP Environment Building
 
 INSTALLATION
 ------------
@@ -12,7 +12,7 @@ Select your Linux distribution to download and execute the installer as below:
 
 ### Ubuntu 16.04 LTS
 
-> Nginx: 1.10.3  
+> Apache: 2.4.8   
 > PHP: 7.0  
 > PHP: 5.6 (Optional)  
 > MySQL: 5.7.25 (Optional)     
@@ -20,7 +20,7 @@ Select your Linux distribution to download and execute the installer as below:
 > *PhpMyAdmin (Optional) is installed at `/var/www/html/phpmyadmin` and can be accessed via `http://yourhost/phpmyadmin`.*
 
 ```
-$ bash <(wget -qO- https://raw.githubusercontent.com/yidas/server-installers/master/LNMP/ubuntu16.04.sh)
+$ bash <(wget -qO- https://raw.githubusercontent.com/yidas/server-installers/master/LAMP/ubuntu16.04.sh)
 ```
 
 ### Ubuntu 18.04 LTS
@@ -35,7 +35,7 @@ $ bash <(wget -qO- https://raw.githubusercontent.com/yidas/server-installers/mas
 > *PhpMyAdmin (Optional) is installed at `/var/www/html/phpmyadmin` and can be accessed via `http://yourhost/phpmyadmin`.*
 
 ```
-$ bash <(wget -qO- https://raw.githubusercontent.com/yidas/server-installers/master/LNMP/ubuntu18.04.sh)
+$ bash <(wget -qO- https://raw.githubusercontent.com/yidas/server-installers/master/LAMP/ubuntu18.04.sh)
 ```
 
 
