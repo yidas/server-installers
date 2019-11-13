@@ -6,8 +6,12 @@
 # @version 1.0.0
 # @link    https://github.com/yidas/server-installers
 
+# Pre-installation
+sudo yum update -y
+sudo yum install wget -y
+
 # Program commands check
-for cmd in wget yum sudo service tar mv rm
+for cmd in yum sudo service tar mv rm
 do
     if ! hash $cmd 2>/dev/null
     then
@@ -17,24 +21,18 @@ do
 done
 
 # PHP
-usePhp5=false;
-# PHP default
-echo "PHP: Do you want to additionally install PHP 5.6? [Y/n, empty as No]"
-read yn
-case $yn in
-    [Yy]* ) usePhp5=true;;
-    * ) 
-esac
-# PHP force asking
-#while true; do
-#    echo "PHP: Default version is PHP 7, install old version PHP 5.6? [Y/n]"
-#    read yn
-#    case $yn in
-#        [Yy]* ) usePhp5=true; break;;
-#        [Nn]* ) break;;
-#        * ) echo "Please answer yes or no.";;
-#    esac
-#done
+phpVersion=70;
+echo "PHP: Enter the version you want to install. [Default is 7.0]
+56 => 5.6
+70 => 7.0
+71 => 7.1
+72 => 7.2
+73 => 7.3"
+
+read input
+if [ -n "$input" ]; then
+    phpVersion=$input;
+fi
 
 # MySQL question
 echo "MySQL: Do you want to install MySQL? [Y/n, empty as Yes]"
@@ -69,16 +67,19 @@ if [ $installPhpMyAdmin = true ]; then
     esac
 fi
 
-# APT Source using IPv4
-sudo apt-get update
-
 # Nginx
 sudo yum install epel-release -y
 sudo yum install nginx -y
 sudo systemctl start nginx
 
-
 # PHP
+sudo yum install epel-release yum-utils -y
+sudo yum install http://rpms.remirepo.net/enterprise/remi-release-7.rpm -y
+sudo yum-config-manager --enable remi-php"${phpVersion}"
+sudo yum install php php-fpm php-cli php-common php-opcache php-gd php-curl php-mysql -y
+
+exit
+
 sudo apt-get install php-fpm php-mysql php-cli php-mcrypt php-curl php-mbstring php-imagick php-gd php-xml php-zip -y
 sudo apt-get install php-memcached memcached -y
 sudo phpenmod mcrypt
