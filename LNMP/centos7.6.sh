@@ -7,7 +7,6 @@
 # @link    https://github.com/yidas/server-installers
 
 # Pre-installation
-sudo yum update -y
 sudo yum install wget -y
 
 # Program commands check
@@ -47,7 +46,6 @@ case $yn in
         if [ ! $mysqlRootPassword ]; then
             mysqlRootPassword='password'
         fi
-        ;;
 esac
 
 # PHPMyAdmin question
@@ -67,6 +65,9 @@ if [ $installPhpMyAdmin = true ]; then
     esac
 fi
 
+# Update package repositories
+sudo yum update -y
+
 # Nginx
 sudo yum install epel-release -y
 sudo yum install nginx -y
@@ -77,34 +78,22 @@ sudo yum install epel-release yum-utils -y
 sudo yum install http://rpms.remirepo.net/enterprise/remi-release-7.rpm -y
 sudo yum-config-manager --enable remi-php"${phpVersion}"
 sudo yum install php php-fpm php-cli php-common php-opcache php-gd php-curl php-mysql -y
-
-exit
-
-sudo apt-get install php-fpm php-mysql php-cli php-mcrypt php-curl php-mbstring php-imagick php-gd php-xml php-zip -y
-sudo apt-get install php-memcached memcached -y
-sudo phpenmod mcrypt
-
-if [ $usePhp5 = true ]; then
-    # PHP 5.6
-    sudo apt-get install software-properties-common -y
-    sudo apt-get install python-software-properties -y
-    sudo add-apt-repository ppa:ondrej/php -y
-    sudo apt-get update
-    sudo apt-get install php5.6-fpm php5.6-mysql php5.6-cli php5.6-mcrypt php5.6-curl php5.6-mbstring php5.6-imagick php5.6-gd php5.6-xml php5.6-zip -y
-fi
-
-# MySQL
-if [ $installMySQL = true ]; then
-    sudo debconf-set-selections <<< "mysql-server mysql-server/root_password password ${mysqlRootPassword}"
-    sudo debconf-set-selections <<< "mysql-server mysql-server/root_password_again password ${mysqlRootPassword}"
-    sudo apt-get install mysql-server -y
-fi
+# PHP-FPM Nginx user
+sudo sed -i '/user = apache/c\user = nginx' /etc/php-fpm.d/www.conf
+sudo sed -i '/group = apache/c\group = nginx' /etc/php-fpm.d/www.conf
+# PHP-FPM Session permission
+sudo chown -R nginx:nginx /var/lib/php/session
+# CentOS Default Site
+sudo sed -i '/listen       80/c\#listen       80' /etc/nginx/nginx.conf
+sudo sed -i '/listen       \[::\]:80/c\#listen       \[::\]:80' /etc/nginx/nginx.conf
+configUrl='https://raw.githubusercontent.com/yidas/server-installers/master/LNMP/nginx-sites/centos-tcp-php.conf'
+sudo wget "${configUrl}" -O /etc/nginx/conf.d/default.conf
 
 # PHPMyAdmin
 if [ $installPhpMyAdmin = true ]; then
     # Configuration
     version="4.8.2"
-    webPath="/var/www/html/"
+    webPath="/usr/share/nginx/html/"
     #filename="phpMyAdmin-${version}-english"
     filename="phpMyAdmin-${version}-all-languages"
     fileUrl="https://files.phpmyadmin.net/phpMyAdmin/${version}/${filename}.tar.gz"
@@ -114,7 +103,7 @@ if [ $installPhpMyAdmin = true ]; then
     sudo rm -f "${filename}.tar.gz"
     sudo mv "${webPath}${filename}" "${webPath}phpmyadmin"
     # Nginx Default Site
-    configUrl='https://raw.githubusercontent.com/yidas/server-installers/master/LNMP/nginx-sites/default-php7.0-all'
+    configUrl='https://raw.githubusercontent.com/yidas/server-installers/master/LNMP/nginx-sites/centos-tcp-php.conf'
     
     sudo wget "${configUrl}" -O /etc/nginx/sites-available/default
     
@@ -126,10 +115,26 @@ if [ $installPhpMyAdmin = true ]; then
         # Commnads
         pathTheme="${webPath}phpmyadmin/themes"
         sudo wget "${fileUrl}" -P "${pathTheme}"
-        sudo apt install unzip -y
+        sudo yum install unzip -y
         sudo unzip "${pathTheme}/${file}" -d "${pathTheme}/"
         sudo rm "${pathTheme}/${file}"
     fi
 fi
 
-sudo service nginx reload
+sudo systemctl restart php-fpm
+sudo systemctl restart nginx
+exit
+
+
+# MySQL
+if [ $installMySQL = true ]; then
+    sudo debconf-set-selections <<< "mysql-server mysql-server/root_password password ${mysqlRootPassword}"
+    sudo debconf-set-selections <<< "mysql-server mysql-server/root_password_again password ${mysqlRootPassword}"
+    wget http://repo.mysql.com/mysql-community-release-el7-5.noarch.rpm
+    sudo rpm -ivh mysql-community-release-el7-5.noarch.rpm
+    yum update -y
+    sudo yum install mysql-server
+    sudo systemctl start mysqld
+fi
+
+
