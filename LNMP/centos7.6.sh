@@ -89,6 +89,16 @@ sudo sed -i '/listen       \[::\]:80/c\#listen       \[::\]:80' /etc/nginx/nginx
 configUrl='https://raw.githubusercontent.com/yidas/server-installers/master/LNMP/nginx-sites/centos-tcp-php.conf'
 sudo wget "${configUrl}" -O /etc/nginx/conf.d/default.conf
 
+# MySQL
+if [ $installMySQL = true ]; then
+    wget http://repo.mysql.com/mysql-community-release-el7-5.noarch.rpm
+    sudo rpm -ivh mysql-community-release-el7-5.noarch.rpm
+    sudo yum update -y
+    sudo yum install mysql-server -y
+    sudo systemctl start mysqld
+    mysql -uroot -Bse "SET PASSWORD FOR 'root'@'localhost' = PASSWORD('${mysqlRootPassword}');"
+fi
+
 # PHPMyAdmin
 if [ $installPhpMyAdmin = true ]; then
     # Configuration
@@ -124,17 +134,3 @@ fi
 sudo systemctl restart php-fpm
 sudo systemctl restart nginx
 exit
-
-
-# MySQL
-if [ $installMySQL = true ]; then
-    sudo debconf-set-selections <<< "mysql-server mysql-server/root_password password ${mysqlRootPassword}"
-    sudo debconf-set-selections <<< "mysql-server mysql-server/root_password_again password ${mysqlRootPassword}"
-    wget http://repo.mysql.com/mysql-community-release-el7-5.noarch.rpm
-    sudo rpm -ivh mysql-community-release-el7-5.noarch.rpm
-    yum update -y
-    sudo yum install mysql-server
-    sudo systemctl start mysqld
-fi
-
-
