@@ -39,3 +39,18 @@ $ bash <(wget -qO- https://raw.githubusercontent.com/yidas/server-installers/mas
 ```
 
 
+### Centos 7.6
+
+> Nginx: 1.16.1  
+> PHP: 7.0  
+> PHP: 7.1 (Optional)  
+> PHP: 7.2 (Optional)  
+> PHP: 7.3 (Optional) 
+> PHP: 5.6 (Optional)  
+> MySQL: 5.6.47 (Optional)   
+>
+> *PhpMyAdmin (Optional) is installed at `/usr/share/nginx/html/phpmyadmin` and can be accessed via `http://yourhost/phpmyadmin`.*
+
+```
+$ bash <(wget -qO- https://raw.githubusercontent.com/yidas/server-installers/master/LNMP/centos7.6.sh)
+```
