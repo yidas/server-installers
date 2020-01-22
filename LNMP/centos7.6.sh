@@ -10,7 +10,7 @@
 sudo yum install wget -y
 
 # Program commands check
-for cmd in yum sudo service tar mv rm
+for cmd in yum sudo tar mv rm
 do
     if ! hash $cmd 2>/dev/null
     then
