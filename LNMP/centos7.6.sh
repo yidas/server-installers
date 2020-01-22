@@ -91,7 +91,7 @@ sudo wget "${configUrl}" -O /etc/nginx/conf.d/default.conf
 
 # MySQL
 if [ $installMySQL = true ]; then
-    wget http://repo.mysql.com/mysql-community-release-el7-5.noarch.rpm
+    sudo wget http://repo.mysql.com/mysql-community-release-el7-5.noarch.rpm
     sudo rpm -ivh mysql-community-release-el7-5.noarch.rpm
     sudo yum update -y
     sudo yum install mysql-server -y
