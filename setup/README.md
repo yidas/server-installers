@@ -17,8 +17,7 @@ Select your Linux distribution to download and execute the installer as below:
 > Sudoer User creating
 
 ```
-$ wget https://raw.githubusercontent.com/yidas/server-installers/master/setup/ubuntu16.04.sh -O installer
-$ bash installer
+$ bash <(wget -qO- https://raw.githubusercontent.com/yidas/server-installers/master/setup/ubuntu16.04.sh)
 ```
 
 ### Ubuntu 18.04 LTS
@@ -28,6 +27,5 @@ $ bash installer
 > Sudoer User creating
 
 ```
-$ wget https://raw.githubusercontent.com/yidas/server-installers/master/setup/ubuntu18.04.sh -O installer
-$ bash installer
+$ bash <(wget -qO- https://raw.githubusercontent.com/yidas/server-installers/master/setup/ubuntu18.04.sh)
 ```
