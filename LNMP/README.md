@@ -54,8 +54,8 @@ $ sudo bash <(wget -qO- https://raw.githubusercontent.com/yidas/server-installer
 
 ### Ubuntu 22.04 LTS
 
-> Nginx: 1.20.0  
-> PHP: 8.0  
+> Nginx: 1.18.0  
+> PHP: 8.1
 > PHP: 7.4 (Optional)  
 > PHP: 5.6 (Optional)  
 > MySQL: 8.0 (Optional)   
