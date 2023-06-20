@@ -123,8 +123,8 @@ if [ $installPhpMyAdmin = true ]; then
     # PHPMyAdmin theme
     if [ $installPhpMyAdminTheme = true ]; then
         # Configuration
-        file="metro-2.8.zip"
-        fileUrl="https://files.phpmyadmin.net/themes/metro/2.8/${file}"
+        file="metro-2.8.1.zip"
+        fileUrl="https://files.phpmyadmin.net/themes/metro/2.8.1/${file}"
         # Commnads
         pathTheme="${webPath}phpmyadmin/themes"
         wget "${fileUrl}" -P "${pathTheme}"
