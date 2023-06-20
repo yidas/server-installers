@@ -140,4 +140,4 @@ fi
 
 service nginx reload
 service nginx start
-service php8.0-fpm start
+service php8.1-fpm start
