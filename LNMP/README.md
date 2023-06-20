@@ -40,7 +40,7 @@ $ bash <(wget -qO- https://raw.githubusercontent.com/yidas/server-installers/mas
 
 ### Ubuntu 20.04 LTS
 
-> Nginx: 1.14.0  
+> Nginx: 1.18.0  
 > PHP: 7.4  
 > PHP: 7.3 (Optional)  
 > PHP: 5.6 (Optional)  
@@ -50,6 +50,20 @@ $ bash <(wget -qO- https://raw.githubusercontent.com/yidas/server-installers/mas
 
 ```
 $ sudo bash <(wget -qO- https://raw.githubusercontent.com/yidas/server-installers/master/LNMP/ubuntu20.04.sh)
+```
+
+### Ubuntu 22.04 LTS
+
+> Nginx: 1.20.0  
+> PHP: 8.0  
+> PHP: 7.4 (Optional)  
+> PHP: 5.6 (Optional)  
+> MySQL: 8.0 (Optional)   
+>
+> *PhpMyAdmin (Optional) is installed at `/var/www/html/phpmyadmin` and can be accessed via `http://yourhost/phpmyadmin`.*
+
+```
+$ sudo bash <(wget -qO- https://raw.githubusercontent.com/yidas/server-installers/master/LNMP/ubuntu22.04.sh)
 ```
 
 ### Centos 7.6
