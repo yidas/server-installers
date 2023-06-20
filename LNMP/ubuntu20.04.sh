@@ -6,6 +6,8 @@
 # @version 1.0.0
 # @link    https://github.com/yidas/server-installers
 
+# Interactive process ---
+
 for cmd in wget apt apt-get service tar mv rm
 do
     if ! hash $cmd 2>/dev/null
@@ -65,6 +67,8 @@ if [ $installPhpMyAdmin = true ]; then
     esac
 fi
 
+# Installation process ---
+
 # APT Source using IPv4
 apt-get update
 
@@ -116,7 +120,7 @@ if [ $installPhpMyAdmin = true ]; then
     rm -f "${filename}.tar.gz"
     mv "${webPath}${filename}" "${webPath}phpmyadmin"
     # Nginx Default Site
-    configUrl='https://raw.githubusercontent.com/yidas/server-installers/master/LNMP/nginx-sites/default-php7.2-all'
+    configUrl='https://raw.githubusercontent.com/yidas/server-installers/master/LNMP/nginx-sites/default-php7.4-all'
     
     wget "${configUrl}" -O /etc/nginx/sites-available/default
     
@@ -129,9 +133,12 @@ if [ $installPhpMyAdmin = true ]; then
         pathTheme="${webPath}phpmyadmin/themes"
         wget "${fileUrl}" -P "${pathTheme}"
         apt install unzip -y
-        unzip "${pathTheme}/${file}" -d "${pathTheme}/"
+        unzip -o "${pathTheme}/${file}" -d "${pathTheme}/"
         rm "${pathTheme}/${file}"
     fi
 fi
 
 service nginx reload
+service nginx start
+service php7.4-fpm start
+
