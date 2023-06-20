@@ -120,7 +120,7 @@ if [ $installPhpMyAdmin = true ]; then
     rm -f "${filename}.tar.gz"
     mv "${webPath}${filename}" "${webPath}phpmyadmin"
     # Nginx Default Site
-    configUrl='https://raw.githubusercontent.com/yidas/server-installers/master/LNMP/nginx-sites/default-php7.4-all'
+    configUrl='https://raw.githubusercontent.com/yidas/server-installers/master/LNMP/nginx-sites/default-php8.0-all'
     
     wget "${configUrl}" -O /etc/nginx/sites-available/default
     
