@@ -104,6 +104,7 @@ if [ $installMySQL = true ]; then
     debconf-set-selections <<< "mysql-server mysql-server/root_password password ${mysqlRootPassword}"
     debconf-set-selections <<< "mysql-server mysql-server/root_password_again password ${mysqlRootPassword}"
     apt-get install mysql-server -y
+    service mysql start
 fi
 
 # PHPMyAdmin
