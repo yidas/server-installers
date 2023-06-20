@@ -43,7 +43,7 @@ server {
         # fastcgi_pass 127.0.0.1:9000;
 
         # With php8.0-fpm:
-        fastcgi_pass unix:/run/php/php8.0-fpm.sock;
+        fastcgi_pass unix:/run/php/php8.1-fpm.sock;
 
         # With php7.4-fpm (Optional install):
         #fastcgi_pass unix:/run/php/php7.4-fpm.sock;
